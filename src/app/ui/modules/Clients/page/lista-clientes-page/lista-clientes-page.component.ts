@@ -52,7 +52,7 @@ export class ListaClientesPageComponent {
 
   startPress(event: Event, item: { name: string; updated: Date; showDelete: boolean; translateX: number }) {
     this.pressTimer = setTimeout(() => {
-      console.log('Se mantuvo presionado:', item.name);
+      alert('Se mantuvo presionado:');
       // Aquí puedes mostrar un menú, abrir un modal, etc.
     }, 1000); // 1 segundo para considerar "presionado"
   }
