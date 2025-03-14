@@ -33,10 +33,14 @@
   <div class="overflow-y-auto max-h-[calc(100vh-140px)]">
     <mat-list>
       @for (folder of filteredFolders(); track folder) {
-        <mat-list-item class="p-2 rounded hover:bg-gray-700 transition"
-          (mousedown)="startPress($event, folder)"
-          (mouseup)="cancelPress()"
-          (mouseleave)="cancelPress()">
+      <mat-list-item
+        class="p-2 rounded hover:bg-gray-700 transition"
+        (mousedown)="startPress($event, folder)"
+        (mouseup)="cancelPress()"
+        (mouseleave)="cancelPress()"
+        (touchstart)="startPress($event, folder)"
+        (touchend)="cancelPress()"
+      >
         <mat-icon matListItemIcon class="text-gray-300">person</mat-icon>
         <div matListItemTitle class="text-gray-300 text-lg font-medium">
           {{ folder.name }}
