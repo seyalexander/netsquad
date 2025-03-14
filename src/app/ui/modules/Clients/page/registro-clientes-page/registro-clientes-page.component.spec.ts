@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroClientesPageComponent } from './registro-clientes-page.component';
+import RegistroClientesPageComponent from './registro-clientes-page.component';
 
 describe('RegistroClientesPageComponent', () => {
   let component: RegistroClientesPageComponent;

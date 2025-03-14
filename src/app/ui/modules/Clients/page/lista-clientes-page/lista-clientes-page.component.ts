@@ -1,5 +1,5 @@
 import { DatePipe, NgClass, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,12 @@ import {MatListModule} from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+  MatBottomSheetRef,
+} from '@angular/material/bottom-sheet';
+import RegistroClientesPageComponent from '../registro-clientes-page/registro-clientes-page.component';
 
 export interface Section {
   name: string;
@@ -35,6 +41,12 @@ export interface Section {
 })
 export class ListaClientesPageComponent {
   searchTerm: string = '';
+
+  private _bottomSheet = inject(MatBottomSheet);
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(RegistroClientesPageComponent);
+  }
 
 filteredFolders() {
   return this.folders.filter(folder =>

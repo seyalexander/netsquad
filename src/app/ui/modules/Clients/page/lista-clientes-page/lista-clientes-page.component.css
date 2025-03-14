@@ -4,6 +4,10 @@
 
 mat-toolbar {
   background-color: black !important;
+
+}
+
+mat-toolbar button {
   color: white !important;
 }
 
