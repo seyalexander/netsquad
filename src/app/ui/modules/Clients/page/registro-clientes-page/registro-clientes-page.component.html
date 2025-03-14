@@ -5,7 +5,7 @@
     <mat-tab-group>
       <!-- TAB 1: Datos Personales -->
       <mat-tab label="Datos Personales">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <mat-form-field class="w-full">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="nombre" required />
@@ -25,7 +25,7 @@
 
       <!-- TAB 2: Detalles del Servicio -->
       <mat-tab label="Detalles del Servicio">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <mat-form-field class="w-full">
             <mat-label>Fecha de Inicio</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="fechaInicio" required />
@@ -47,7 +47,7 @@
 
       <!-- TAB 3: Configuración del Plan -->
       <mat-tab label="Configuración del Plan">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <mat-form-field class="w-full">
             <mat-label>Velocidad Contratada (Mbps)</mat-label>
             <mat-select formControlName="velocidad">
