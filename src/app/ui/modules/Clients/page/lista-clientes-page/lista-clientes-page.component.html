@@ -1,12 +1,22 @@
 <div class="w-full h-full bg-white">
   <!-- Toolbar -->
   <mat-toolbar class="bg-black text-white">
-    <button routerLink="/" mat-icon-button class="text-white" aria-label="Volver">
+    <button
+      routerLink="/"
+      mat-icon-button
+      class="text-white"
+      aria-label="Volver"
+    >
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="text-gray-300 text-lg">Clientes</span>
     <span class="flex-grow"></span>
-    <button (click)="openBottomSheet()"  mat-icon-button class="text-white" aria-label="Agregar Cliente">
+    <button
+      (click)="openBottomSheet()"
+      mat-icon-button
+      class="text-white"
+      aria-label="Agregar Cliente"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
@@ -15,7 +25,7 @@
   <div class="p-2 w-full bg-white">
     <mat-form-field class="w-full">
       <mat-label>Buscar cliente</mat-label>
-      <input matInput placeholder="Ingresar nombre" [(ngModel)]="searchTerm">
+      <input matInput placeholder="Ingresar nombre" [(ngModel)]="searchTerm" />
     </mat-form-field>
   </div>
 
@@ -23,15 +33,18 @@
   <div class="overflow-y-auto max-h-[calc(100vh-140px)]">
     <mat-list>
       @for (folder of filteredFolders(); track folder) {
-        <mat-list-item class="p-2 rounded hover:bg-gray-700 transition">
-          <mat-icon matListItemIcon class="text-gray-300">person</mat-icon>
-          <div matListItemTitle class="text-gray-300 text-lg font-medium">
-            {{ folder.name }}
-          </div>
-          <div matListItemLine class="text-gray-400 text-sm">
-            {{ folder.updated | date }}
-          </div>
-        </mat-list-item>
+        <mat-list-item class="p-2 rounded hover:bg-gray-700 transition"
+          (mousedown)="startPress($event, folder)"
+          (mouseup)="cancelPress()"
+          (mouseleave)="cancelPress()">
+        <mat-icon matListItemIcon class="text-gray-300">person</mat-icon>
+        <div matListItemTitle class="text-gray-300 text-lg font-medium">
+          {{ folder.name }}
+        </div>
+        <div matListItemLine class="text-gray-400 text-sm">
+          {{ folder.updated | date }}
+        </div>
+      </mat-list-item>
       }
     </mat-list>
   </div>

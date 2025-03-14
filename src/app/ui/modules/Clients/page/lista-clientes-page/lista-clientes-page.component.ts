@@ -5,7 +5,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -48,11 +48,24 @@ export class ListaClientesPageComponent {
     this._bottomSheet.open(RegistroClientesPageComponent);
   }
 
-filteredFolders() {
-  return this.folders.filter(folder =>
-    folder.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-  );
-}
+  pressTimer: any;
+
+  startPress(event: Event, item: { name: string; updated: Date; showDelete: boolean; translateX: number }) {
+    this.pressTimer = setTimeout(() => {
+      console.log('Se mantuvo presionado:', item.name);
+      // Aquí puedes mostrar un menú, abrir un modal, etc.
+    }, 1000); // 1 segundo para considerar "presionado"
+  }
+
+  cancelPress() {
+    clearTimeout(this.pressTimer);
+  }
+
+  filteredFolders() {
+    return this.folders.filter(folder =>
+      folder.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
   folders = [
     { name: 'Arles Trolantains', updated: new Date(), showDelete: false, translateX: 0 },
     { name: 'Claudio Paul', updated: new Date(), showDelete: false, translateX: 0 },
