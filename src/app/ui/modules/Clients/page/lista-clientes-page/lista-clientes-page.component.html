@@ -1,7 +1,12 @@
-<div class="w-full h-full bg-gray-900 text-white">
+<div class="w-full h-full bg-white text-white">
   <!-- Toolbar con fondo oscuro -->
   <mat-toolbar class="bg-black text-white">
-    <button routerLink="/" mat-icon-button class="text-white" aria-label="Volver">
+    <button
+      routerLink="/"
+      mat-icon-button
+      class="text-white"
+      aria-label="Volver"
+    >
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="text-gray-300 text-lg">Clientes</span>
@@ -12,10 +17,10 @@
   </mat-toolbar>
 
   <!-- Campo de búsqueda fijo -->
-  <div class="p-3 bg-gray-800">
+  <div class="p-3">
     <mat-form-field class="w-full">
       <mat-label>Buscar cliente</mat-label>
-      <input matInput placeholder="Ingresar nombre">
+      <input matInput placeholder="Ingresar nombre" />
     </mat-form-field>
   </div>
 
@@ -34,7 +39,7 @@
 
         <!-- Ítem deslizable -->
         <mat-list-item
-          class="p-1 rounded-lg bg-gray-800 shadow hover:bg-gray-700 transition transform group-hover:translate-x-12"
+          class="p-1 rounded-lg  hover:bg-gray-700 transition transform group-hover:translate-x-12"
           (swipeleft)="ocultarBoton(folder)"
           (swiperight)="mostrarBoton(folder)"
         >
