@@ -1,0 +1,43 @@
+<div class="w-full h-full bg-black">
+  <!-- Imagen con degradado -->
+  <div class="relative h-61 overflow-hidden bg-black">
+    <img
+      class="w-full h-full object-cover object-center"
+      src="https://i.pinimg.com/736x/88/73/cd/8873cd36fea428143e36e261b11bb57d.jpg"
+      alt=""
+    />
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-black"></div>
+  </div>
+
+  <!-- Opciones -->
+  <div class="p-4 mt-8">
+    <h2 class="mb-6 text-2xl text-gray-400 font-semibold text-center">Opciones</h2>
+
+    <mat-grid-list cols="2" rowHeight="2:1" class="gap-4">
+      <mat-grid-tile>
+        <button routerLink="/clientes" class="w-full h-32 flex items-center justify-center gap-2 text-white bg-gray-800 hover:bg-gray-700 p-4 rounded-lg shadow-lg transition">
+          <mat-icon>person</mat-icon>
+          Clientes
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button class="w-full h-32 flex items-center justify-center gap-2 text-white bg-gray-800 hover:bg-gray-700 p-4 rounded-lg shadow-lg transition">
+          <mat-icon>group</mat-icon>
+          Empleados
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button class="w-full h-32 flex items-center justify-center gap-2 text-white bg-gray-800 hover:bg-gray-700 p-4 rounded-lg shadow-lg transition">
+          <mat-icon>devices</mat-icon>
+          Equipos
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button class="w-full h-32 flex items-center justify-center gap-2 text-white bg-gray-800 hover:bg-gray-700 p-4 rounded-lg shadow-lg transition">
+          <mat-icon>bar_chart</mat-icon>
+          Reportes
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
