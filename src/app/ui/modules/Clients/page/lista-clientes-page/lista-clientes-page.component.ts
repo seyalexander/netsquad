@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -28,133 +28,43 @@ export interface Section {
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './lista-clientes-page.component.html',
   styleUrl: './lista-clientes-page.component.css'
 })
 export class ListaClientesPageComponent {
+  searchTerm: string = '';
 
-  mostrarBoton(folder: any) {
-    // Lógica para hacer visible el botón de eliminar
-  }
-
-  ocultarBoton(folder: any) {
-    // Lógica para ocultar el botón de eliminar
-  }
-
-  eliminar(folder: any) {
-    console.log('Eliminando:', folder);
-  }
-
-  folders: Section[] = [
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Edwin Seclen',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Claudio Paul',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Jhosimar Trolentino',
-      updated: new Date('1/28/16'),
-    },
+filteredFolders() {
+  return this.folders.filter(folder =>
+    folder.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+}
+  folders = [
+    { name: 'Arles Trolantains', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Claudio Paul', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 1', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 2', updated: new Date(), showDelete: false, translateX: 0 },
+    { name: 'Cliente 3', updated: new Date(), showDelete: false, translateX: 0 },
   ];
 }
