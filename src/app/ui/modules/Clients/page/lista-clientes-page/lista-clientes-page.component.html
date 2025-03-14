@@ -1,22 +1,12 @@
 <div class="w-full h-full bg-white">
   <!-- Toolbar -->
   <mat-toolbar class="bg-black text-white">
-    <button
-      routerLink="/"
-      mat-icon-button
-      class="text-white"
-      aria-label="Volver"
-    >
+    <button routerLink="/" mat-icon-button class="text-white" aria-label="Volver">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="text-gray-300 text-lg">Clientes</span>
     <span class="flex-grow"></span>
-    <button
-      (click)="openBottomSheet()"
-      mat-icon-button
-      class="text-white"
-      aria-label="Agregar Cliente"
-    >
+    <button (click)="openBottomSheet()" mat-icon-button class="text-white" aria-label="Agregar Cliente">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
@@ -34,7 +24,7 @@
     <mat-list>
       @for (folder of filteredFolders(); track folder) {
       <mat-list-item
-        class="p-2 rounded hover:bg-gray-700 transition"
+        class="p-2 rounded hover:bg-gray-600 active:bg-gray-500 transition-all duration-200"
         (mousedown)="startPress($event, folder)"
         (mouseup)="cancelPress()"
         (mouseleave)="cancelPress()"
