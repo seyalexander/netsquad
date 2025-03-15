@@ -166,7 +166,7 @@ export class ListaClientesPageComponent {
             Cancelar
           </button>
           <button id="confirm-btn" class="bg-red-600  text-white font-semibold px-4 py-2 rounded w-36" disabled>
-            Sí, Anular (3)
+            Sí, Eliminar (3)
           </button>
         </div>
       `,
@@ -184,11 +184,11 @@ export class ListaClientesPageComponent {
         // Iniciar cuenta regresiva
         const interval = setInterval(() => {
           countdown--;
-          confirmBtn.textContent = `Sí, Anular (${countdown})`;
+          confirmBtn.textContent = `Sí, Eliminar (${countdown})`;
 
           if (countdown === 0) {
             clearInterval(interval);
-            confirmBtn.textContent = "Sí, Anular";
+            confirmBtn.textContent = "Sí, Eliminar";
             confirmBtn.disabled = false;
             confirmBtn.classList.add("hover:bg-red-700"); // Activa el hover
           }
