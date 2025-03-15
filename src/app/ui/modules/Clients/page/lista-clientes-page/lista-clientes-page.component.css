@@ -36,3 +36,7 @@ mat-toolbar button {
 .spacer {
   flex: 1;
 }
+
+.mdc-list {
+  padding: 0;
+}
