@@ -15,6 +15,7 @@ import {
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
 import RegistroClientesPageComponent from '../registro-clientes-page/registro-clientes-page.component';
+import Swal from 'sweetalert2'
 
 export interface Section {
   name: string;
@@ -55,8 +56,8 @@ export class ListaClientesPageComponent {
 
   startPress(event: Event, folder: any) {
     this.pressTimer = setTimeout(() => {
-      this.folders.forEach(f => f.selected = false); // Desmarca los demás
-      folder.selected = true; // Marca el seleccionado
+      this.folders.forEach(f => f.selected = false);
+      folder.selected = true;
       this.ShowOpcionesItem = true;
     }, 1000);
   }
@@ -137,5 +138,69 @@ export class ListaClientesPageComponent {
     } else {
       alert('Tu navegador no soporta compartir contenido.');
     }
+  }
+
+
+  Alert_EliminarCliente(response: any) {
+    let countdown = 3; // Cuenta regresiva inicial
+
+    Swal.fire({
+      title: `<div class="text-red-600 text-2xl font-bold flex items-center justify-center">
+                <span>Eliminar Cliente</span>
+              </div>`,
+      html: `
+        <div class="border-b border-gray-300 pb-4">
+          <p class="text-gray-700 text-lg text-center">
+            ¿Seguro que deseas eliminar a <span class="font-bold text-red-500">${response.descripcion}</span>?
+          </p>
+        </div>
+
+        <div class="mt-4 text-left space-y-3">
+          <p class="text-gray-600 text-sm text-center">Esta acción no se puede deshacer.</p>
+          <p class="text-gray-600 text-sm text-center">Asegúrate de revisar antes de continuar.</p>
+        </div>
+
+        <!-- Contenedor de botones para asegurar su visibilidad -->
+        <div id="swal-buttons" class="flex justify-center gap-4 mt-5">
+          <button id="cancel-btn" class="bg-gray-500 hover:bg-gray-500 text-white font-semibold px-4 py-2 rounded w-36">
+            Cancelar
+          </button>
+          <button id="confirm-btn" class="bg-red-600  text-white font-semibold px-4 py-2 rounded w-36" disabled>
+            Sí, Anular (3)
+          </button>
+        </div>
+      `,
+      icon: "warning",
+      showConfirmButton: false, // Ocultamos botones nativos de SweetAlert
+      showCancelButton: false,
+      didOpen: () => {
+        const cancelBtn = document.getElementById("cancel-btn") as HTMLButtonElement;
+        const confirmBtn = document.getElementById("confirm-btn") as HTMLButtonElement;
+
+        if (cancelBtn) {
+          cancelBtn.onclick = () => Swal.close(); // Cierra la alerta
+        }
+
+        // Iniciar cuenta regresiva
+        const interval = setInterval(() => {
+          countdown--;
+          confirmBtn.textContent = `Sí, Anular (${countdown})`;
+
+          if (countdown === 0) {
+            clearInterval(interval);
+            confirmBtn.textContent = "Sí, Anular";
+            confirmBtn.disabled = false;
+            confirmBtn.classList.add("hover:bg-red-700"); // Activa el hover
+          }
+        }, 1000);
+
+        if (confirmBtn) {
+          confirmBtn.onclick = () => {
+            Swal.close();
+
+          };
+        }
+      },
+    });
   }
 }

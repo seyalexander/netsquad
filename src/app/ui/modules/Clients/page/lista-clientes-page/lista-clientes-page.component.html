@@ -33,7 +33,7 @@
     </button>
     <span class="text-gray-300 text-lg">Arles Trolantains</span>
     <span class="flex-grow"></span>
-    <button mat-icon-button class="text-white" aria-label="Agregar Cliente">
+    <button mat-icon-button class="text-white" aria-label="Agregar Cliente" (click)="Alert_EliminarCliente('')">
       <mat-icon>delete</mat-icon>
     </button>
     <button mat-icon-button class="text-white" aria-label="Agregar Cliente">
@@ -67,7 +67,7 @@
   <mat-list>
     @for (folder of filteredFolders(); track folder) {
     <mat-selection-list
-      class="duration-200"
+      class="duration-200 p-0"
       (mousedown)="startPress($event, folder)"
       (mouseup)="cancelPress()"
       (mouseleave)="cancelPress()"
