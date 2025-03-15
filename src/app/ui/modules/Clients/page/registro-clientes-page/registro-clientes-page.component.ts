@@ -10,6 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatDialog } from '@angular/material/dialog';
+import { ReciboClientesPageComponent } from '../recibo-clientes-page/recibo-clientes-page.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-clientes-page',
@@ -44,7 +47,7 @@ openLink(event: MouseEvent): void {
 clienteForm: FormGroup;
 velocidades = [10, 20, 50, 100, 200, 500]; // Opciones de velocidad de internet
 
-constructor(private fb: FormBuilder) {
+constructor(private fb: FormBuilder, private dialog: MatDialog) {
   this.clienteForm = this.fb.group({
     nombre: ['', Validators.required],
     apellidos: ['', Validators.required],
@@ -57,10 +60,17 @@ constructor(private fb: FormBuilder) {
   });
 }
 
+
+
 registrarCliente() {
   if (this.clienteForm.valid) {
     console.log('Datos del Cliente:', this.clienteForm.value);
-    alert('Cliente registrado con éxito');
+
+    this.dialog.open(ReciboClientesPageComponent, {
+      width: '400px',
+      data: this.clienteForm.value
+    });
+
     this.clienteForm.reset();
   }
 }
