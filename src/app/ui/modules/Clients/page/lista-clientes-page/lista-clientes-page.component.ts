@@ -16,6 +16,7 @@ import {
 } from '@angular/material/bottom-sheet';
 import RegistroClientesPageComponent from '../registro-clientes-page/registro-clientes-page.component';
 import Swal from 'sweetalert2'
+import { DetalleClientesPageComponent } from '../detalle-clientes-page/detalle-clientes-page.component';
 
 export interface Section {
   name: string;
@@ -62,7 +63,6 @@ export class ListaClientesPageComponent {
     }, 1000);
   }
 
-
   cancelPress() {
     clearTimeout(this.pressTimer);
   }
@@ -70,6 +70,11 @@ export class ListaClientesPageComponent {
   clearSelection() {
     this.folders.forEach(folder => folder.selected = false);
     this.ShowOpcionesItem = false;
+  }
+
+  showDetalleCliente: boolean = false
+  MostrarDetalle():void {
+    this._bottomSheet.open(DetalleClientesPageComponent);
   }
 
   filteredFolders() {

@@ -33,66 +33,73 @@
     </button>
     <span class="text-gray-300 text-lg">Arles Trolantains</span>
     <span class="flex-grow"></span>
-    <button mat-icon-button class="text-white" aria-label="Agregar Cliente" (click)="Alert_EliminarCliente('')">
+    <button
+      mat-icon-button
+      class="text-white"
+      aria-label="Agregar Cliente"
+      (click)="Alert_EliminarCliente('')"
+    >
       <mat-icon>delete</mat-icon>
     </button>
-    <button mat-icon-button class="text-white" aria-label="Agregar Cliente">
-      <mat-icon>message</mat-icon>
-    </button>
-    <button mat-icon-button class="text-white" aria-label="Agregar Cliente" (click)="compartirCliente()">
+    <button
+      mat-icon-button
+      class="text-white"
+      aria-label="Agregar Cliente"
+      (click)="compartirCliente()"
+    >
       <mat-icon>shared</mat-icon>
+    </button>
+    <button mat-icon-button class="text-white" aria-label="Agregar Cliente">
+      <mat-icon>more_vert</mat-icon>
     </button>
   </mat-toolbar>
   }
 
-
-<div class="relative">
-
-  @if (ShowOpcionesItem){
-    <div
-    class="overlay"
-    (click)="clearSelection()">
-  </div>
-  }
- <!-- Campo de búsqueda -->
- <div class="p-2 w-full bg-white">
-  <mat-form-field class="w-full">
-    <mat-label>Buscar cliente</mat-label>
-    <input matInput placeholder="Ingresar nombre" [(ngModel)]="searchTerm" />
-  </mat-form-field>
-</div>
-
-<!-- Lista filtrada -->
-<div class="overflow-y-auto max-h-[calc(100vh-140px)]" >
-  <mat-list>
-    @for (folder of filteredFolders(); track folder) {
-    <mat-selection-list
-      class="duration-200 p-0"
-      (mousedown)="startPress($event, folder)"
-      (mouseup)="cancelPress()"
-      (mouseleave)="cancelPress()"
-      (touchstart)="startPress($event, folder)"
-      (touchend)="cancelPress()"
-    >
-      <mat-list-item
-        [ngClass]="{ 'bg-gray-600': folder.selected }"
-        class="hover:bg-gray-500 rounded transition"
-      >
-        <mat-icon matListItemIcon class="text-gray-300">person</mat-icon>
-        <div matListItemTitle class="text-gray-300 text-lg font-medium">
-          {{ folder.name }}
-        </div>
-        <div matListItemLine class="text-gray-400 text-sm">
-          {{ folder.updated | date }}
-        </div>
-      </mat-list-item>
-    </mat-selection-list>
+  <div class="relative">
+    @if (ShowOpcionesItem){
+    <div class="overlay" (click)="clearSelection()"></div>
     }
-  </mat-list>
-</div>
+    <!-- Campo de búsqueda -->
+    <div class="p-2 w-full bg-white">
+      <mat-form-field class="w-full">
+        <mat-label>Buscar cliente</mat-label>
+        <input
+          matInput
+          placeholder="Ingresar nombre"
+          [(ngModel)]="searchTerm"
+        />
+      </mat-form-field>
+    </div>
 
-</div>
-
-
+    <!-- Lista filtrada -->
+    <div class="overflow-y-auto max-h-[calc(100vh-140px)]">
+      <mat-list>
+        @for (folder of filteredFolders(); track folder) {
+        <mat-selection-list
+          class="duration-200 p-0 flex"
+          (mousedown)="startPress($event, folder)"
+          (mouseup)="cancelPress()"
+          (mouseleave)="cancelPress()"
+          (touchstart)="startPress($event, folder)"
+          (touchend)="cancelPress()"
+          (click)="MostrarDetalle()"
+        >
+          <mat-list-item
+            [ngClass]="{ 'bg-gray-600': folder.selected }"
+            class="hover:bg-gray-500 rounded transition"
+          >
+            <mat-icon matListItemIcon class="text-gray-300">person</mat-icon>
+            <div matListItemTitle class="text-gray-300 text-lg font-medium">
+              {{ folder.name }}
+            </div>
+            <div matListItemLine class="text-gray-400 text-sm">
+              {{ folder.updated | date }}
+            </div>
+          </mat-list-item>
+        </mat-selection-list>
+        }
+      </mat-list>
+    </div>
+  </div>
 
 </div>
